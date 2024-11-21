@@ -1,0 +1,90 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block main_title %}{{ title }}{% endblock %}
+
+{% block content_page %}
+
+    <div class="row">
+
+
+        <div class="sub-title">
+            <div class="container-fluid">
+                <a class="navbar-brand mt-3" style="font-size: 5cap">My Blog</a>
+                <form action="{% url 'search' %}" class="d-flex" method="get">
+                    <input name="s" class="form-control me-2" type="text" placeholder="Search..." aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+                {% include 'blog/inc/_filter_offcanvas.html' %}
+            </div>
+        </div>
+
+
+        <div class="col-md-12 content-page">
+        
+            {% for post in posts %}
+                {% if post.is_published %}
+                    <!-- Blog Post Start -->
+                    <div class="col-md-12 blog-post">
+                        <div class="post-image">
+                            <img src="{{ post.photo.url }}" alt="post.photo"
+                                 style="max-width: 100%; max-height: 326px">
+                        </div>
+                        <div class="post-title">
+                            <a href="#"><h1>{{ post.title }}</h1></a>
+                        </div>
+
+                        <div class="post-info">
+                            <span>{{ post.created_at|date:"F j, Y" }} / by <a href="#"
+                                                                              target="_blank">Danil Tenditnyi</a></span>
+                        </div>
+
+                        <div class="post-info">
+                            <p>Category: {{ post.category }}</p>
+                            <p>Tags:
+                                {% for tag in post.tags.all %}{{ tag }}{% if tag == post.tags.all.last %}. {% else %},
+                                {% endif %}{% endfor %}</p>
+                        </div>
+
+                        <p>{{ post.content|safe }}</p>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ post.get_absolute_url }}"
+                               class="button button-style button-anim fa fa-long-arrow-right">
+                                <span class="m2">Read More</span>
+                            </a>
+                            <p>Views: {{ post.views_count }}</p>
+                        </div>
+                    </div>
+                    <!-- Blog Post End -->
+                {% endif %}
+            {% empty %}
+                <p>Nothing found, matching your request...</p>
+            {% endfor %}
+
+            <div class="col-md-12 text-center">
+                <a href="javascript:void(0)" id="load-more-post" class="load-more-button">Load</a>
+                <div id="post-end-message"></div>
+            </div>
+
+        </div>
+
+
+        <!-- Subscribe Form Start -->
+        <div class="col-md-8 col-md-offset-2">
+            <form id="mc-form" method="post"
+                  action="http://uipasta.us14.list-manage.com/subscribe/post?u=854825d502cdc101233c08a21&amp;id=86e84d44b7">
+
+                <div class="subscribe-form margin-top-20">
+                    <input id="mc-email" type="email" placeholder="Email Address" class="text-input">
+                    <button class="submit-btn" type="submit">Submit</button>
+                </div>
+                <p>Subscribe to my weekly newsletter</p>
+                <label for="mc-email" class="mc-label"></label>
+            </form>
+
+        </div>
+        <!-- Subscribe Form End -->
+
+
+    </div>
+{% endblock %}

@@ -1,0 +1,255 @@
+﻿{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block main_title %}DevBlog - About me{% endblock %}
+
+{% block content_page %}
+    <!-- About Me (Right Sidebar) Start -->
+    <div class="row">
+
+
+        <div class="sub-title">
+            <h2>Contact Me</h2>
+            <a href="{% url 'home' %}"><i class="icon-home"></i></a>
+        </div>
+
+
+        <div class="col-md-12 content-page">
+            <div class="col-md-12 blog-post">
+            
+                {# Обработка сообщений (под каждій уровень свой стиль) #}
+                {% if messages %}
+                    {% for message in messages %}
+                        {% if message.tags == 'debug' %}
+                            <div id="message" class="alert alert-secondary" role="alert">
+                                {{ message }}
+                            </div>
+                        {% elif message.tags == 'error' %}
+                            <div id="message" class="alert alert-danger" role="alert">
+                                {{ message }}
+                            </div>
+                        {% else %}
+                            <div id="message" class="alert alert-{{ message.tags }}" role="alert">
+                                {{ message }}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            
+
+                <!-- Intro Start -->
+                <div class="post-title margin-bottom-10">
+                    <h1>Looking for a <span class="main-color">online presence</span>?</h1>
+                </div>
+
+                <p>I am in the website field since 2021 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin
+                    at quam at orci commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec,
+                    tempor semper metus. <b>I am a developer</b>, et accumsan nisi. Duis laoreet pretium ultricies.
+                    Curabitur rhoncus auctor nunc congue sodales. Sed posuere nisi ipsum, eget dignissim nunc dapibus
+                    eget. Aenean elementum sollicitudin sapien ut sapien fermentum aliquet mollis. Curabitur ac quam
+                    orci sodales quam ut tempor.</p>
+                <!-- Intro End -->
+
+
+                <!-- Testimonials Start -->
+                <div class="post-title margin-top-50">
+                    <h2>I hope you've checked <a href="{%  url 'work' %}" data-toggle="tooltip" data-placement="top"
+                                                 title="Check out my work.">my work</a>, Let's take a look on what other
+                        clients said about my work.</h2>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="testimonial-content">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci commodo
+                                hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec, tempor semper
+                                metus.</p>
+                        </div>
+
+                        <div class="testimonial-client-info">
+
+                            <div class="testimonial-client client-thumb">
+                                <img src="{% static 'images/testimonial/1.png' %}" alt="">
+                            </div>
+
+                            <div class="client-text">
+                                <div class="client-name">Client #2</div>
+                                <span>Rolling LTD, Founder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="testimonial-content">
+                            <p>Some comment about my perfect work.</p>
+                        </div>
+
+                        <div class="testimonial-client-info">
+
+                            <div class="testimonial-client client-thumb">
+                                <img src="{% static 'images/testimonial/2.png' %}" alt="">
+                            </div>
+
+                            <div class="client-text">
+                                <div class="client-name">Client #3</div>
+                                <span>WebRes LTD, Founder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="testimonial-content">
+                            <p>Some comment about my perfect work.</p>
+                        </div>
+
+                        <div class="testimonial-client-info">
+
+                            <div class="testimonial-client client-thumb">
+                                <img src="{% static 'images/testimonial/3.png' %}" alt="">
+                            </div>
+
+                            <div class="client-text">
+                                <div class="client-name">Jhon Doe</div>
+                                <span>WeSoon LTD, Founder</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!-- Testimonials  End -->
+
+
+                <!-- Contact Me Start -->
+                
+                <div class="post-title margin-top-70">
+                    <h1>Contact <span class="main-color">Me</span></h1>
+                </div>
+
+
+                <div class="row">
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="contact-us-detail">
+                            <i class="icon-screen-smartphone color-6"></i>
+                            <p><a href="tel:+1234567890">+380 99 564 4295</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="contact-us-detail">
+                            <i class="icon-envelope-open color-5"></i>
+                            <p><a href="mailto:dania.tenditnyi@gmail.com">dania.tenditnyi@gmail.com</a></p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <div class="contact-us-detail">
+                            <i class="icon-clock color-3"></i>
+                            <p>Mon - Fri 10:00 – 18:00</p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row margin-top-30">
+                    <div class="col-md-12">
+
+                        <div class="row">
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <!--<input type="text" id="name" class="form-control" placeholder="Your Name">-->
+                                        {{ form.user_name }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.user_name.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <!--<input type="email" id="email" class="form-control" placeholder="Your Email">-->
+                                        {{ form.email }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.email.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <!--<input type="text" id="website" class="form-control" placeholder="Your Website">-->
+                                        {{ form.website }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.website.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <!--<input type="text" id="address" class="form-control" placeholder="Where are You From?">-->
+                                        {{ form.where_from }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.where_from.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <!--<input type="text" id="address" class="form-control" placeholder="Where are You From?">-->
+                                        {{ form.subject }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.subject.errors }}
+                                    </div>
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <div class="textarea-message form-group">
+                                        <!--<textarea id="message" class="textarea-message form-control"
+                                                  placeholder="Your Message" rows="5"></textarea>-->
+                                        {{ form.message_content }}
+                                    </div>
+
+                                    <div class="invalid-feedback">
+                                        {{ form.message_content.errors }}
+                                    </div>
+                                </div>
+                                
+                                <div class="col-sm-12">
+                                    {{ form.captcha }}
+                                </div>
+
+                                <div class="col-sm-12">
+                                    <label class="form-check-label" for="invalidCheck"></label>
+                                    {{ form.is_published }}
+                                    <div class="invalid-feedback">{{ form.is_published.errors }}</div>
+                                </div>
+
+
+                                <div class="text-center">
+                                    <button type="submit" class="load-more-button">Send</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <!-- Contact Me End -->
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

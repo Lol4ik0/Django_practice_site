@@ -1,0 +1,25 @@
+<nav class="navbar sticky-lg-top navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'home' %}">Сайт новин</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Головна</a></li>
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Зворотній зв'язок</a></li>
+                {% endif %}
+            </ul>
+            <span class="navbar-text position-absolute top-50 end-0 translate-middle-y">
+                {% if request.user.is_authenticated %}
+                    Вітаємо, <a href="{% url 'profile' %}">{{ user.username }}</a> | <a href="{% url 'logout' %}">Вихід з облікового запису</a>
+                {% else %}
+                    <a href="{% url 'signup' %}">Register</a> | <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </span>            
+        </div>
+    </div>
+</nav>

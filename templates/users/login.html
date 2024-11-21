@@ -1,0 +1,14 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Вхід{% endblock %}
+{% block title2 %}Вхід{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block w-100">Увійти</button>
+    </form>
+
+{% endblock %}  

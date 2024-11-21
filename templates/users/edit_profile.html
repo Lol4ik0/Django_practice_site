@@ -1,0 +1,14 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Редагувати мій профіль{% endblock %}
+{% block title2 %}Редагувати мій профіль{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block w-100">Внести зміни</button>
+    </form>
+    
+{% endblock %}  

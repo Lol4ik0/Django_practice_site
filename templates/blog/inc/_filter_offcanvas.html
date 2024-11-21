@@ -1,0 +1,72 @@
+<button class="btn position-absolute start-0 translate-middle-y" type="button" data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasWithBothOptions"
+        aria-controls="offcanvasWithBothOptions">
+    <img src="https://cdn-icons-png.flaticon.com/512/3925/3925083.png" style="width: 20px; height: 20px">
+</button>
+
+<!--<div class="alert alert-info d-none d-lg-block">Resize your browser to show the responsive offcanvas toggle.</div>-->
+
+<div class="cbp-spmenu offcanvas offcanvas-start" data-bs-backdrop="true" data-bs-scroll="true" tabindex="-1"
+     id="offcanvasWithBothOptions"
+     aria-labelledby="offcanvasWithBothOptionsLabel">
+    <div class="offcanvas-header">
+        <h3 class="offcanvas-title" id="offcanvasWithBothOptionsLabel">Choose filters</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body" style="max-height: 97%; overflow: scroll">
+        <form action="{% url 'filter' %}" method="get">
+        
+            <span class="h4">Sorting by</span>
+            <select name="select_sorting" class="form-select form-select-lg" aria-label="Default select">
+                <option value="-title">Alphabet</option>
+                <option selected value="-views_count">Popularity</option>
+                <option value="-created_at">Newest</option>
+                <option value="title">Reverse Alphabet</option>
+                <option value="views_count">Reverse Popularity</option>
+                <option value="created_at">Reverse Newest</option>
+            </select>
+
+            <br><br>
+
+            <span class="h4">Categories</span>
+            <ul class="list-group mt-3">
+                <li class="list-group-item">
+                    <div class="form-check form-switch h5">
+                        <input class="form-check-input all_switch" type="checkbox" role="switch"
+                               id="flexSwitchCheckChecked" name="all_categories" checked>
+                        <label class="form-check-label" for="flexSwitchCheckChecked">All</label>
+                    </div>
+                </li>
+                {% for category in categories %}
+                    <li class="list-group-item">
+                        <div class="form-check form-switch h5">
+                            <input class="form-check-input switch" type="checkbox" role="switch" name="select_categories"
+                                   id="{{ category.id }}Switch" value="{{ category.id }}">
+                            <label class="form-check-label mt-1" for="{{ category.id }}Switch">{{ category.title }}
+                                <span class="badge text-bg-secondary position-absolute mt-2 end-0 translate-middle-y">{{ category.count_posts }}</span>
+                            </label>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <br><br>
+
+            <span class="h4">Tags</span>
+            <ul class="list-group mt-3">
+                {% for tag in tags %}
+                    <li class="list-group-item h5">
+                        <input name="select_tags" class="form-check-input me-1" type="checkbox" value="{{ tag.id }}" id="{{ tag.id }}Checkbox">
+                        <label class="form-check-label" for="{{ tag.id }}Checkbox">{{ tag.title }}</label>
+                    </li>
+                {% endfor %}
+            </ul>
+        
+            <br>
+        
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <button type="submit" class="btn btn-success btn-lg">Apply</button>
+            </div><br><br>
+        </form>
+    </div>
+</div>

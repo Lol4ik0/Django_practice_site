@@ -1,0 +1,178 @@
+{% load static %}
+
+<p>{{ post.content|safe }}</p>
+
+<!-- Post Image Start -->
+<div class="post-image margin-top-40 margin-bottom-40">
+    <img src="{{ post.photo.url }}" alt="post.photo" style="max-width: 100%; max-height: 326px">
+    <p>Image source from <a href="#" target="_blank">Link</a></p>
+</div>
+<!-- Post Image End -->
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec,
+    tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium
+    ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
+
+
+<!-- Post Video Tutorial Start -->
+<div class="video-box margin-top-40 margin-bottom-40">
+    <div class="video-tutorial">
+        <a class="video-popup" href="https://www.youtube.com/watch?v=O2Bsw3lrhvs"
+           title="Video Tutorial">
+            <img src="{% static 'images/blog/4.jpg' %}" alt="">
+        </a>
+    </div>
+    <p>Integrate video on magnific popup for fast page load.</p>
+</div>
+<!-- Post Video Tutorial End -->
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec,
+    tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium
+    ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
+
+
+<!-- Post Blockquote Start -->
+<div class="post-quote margin-top-40 margin-bottom-40">
+    <blockquote>Design is not just what is look like, Design is how it's work.
+    </blockquote>
+</div>
+<!-- Post Blockquote End -->
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec,
+    tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium
+    ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
+
+
+<!-- Post Coding (SyntaxHighlighter) Start -->
+<div class="margin-top-40 margin-bottom-40">  
+<pre class="brush: js h6">
+/* Smooth Scroll */
+
+ $('a.smoth-scroll').on("click", function (e) {
+   var anchor = $(this);
+   $('html, body').stop().animate({
+   scrollTop: $(anchor.attr('href')).offset().top - 50
+   }, 1000);
+   e.preventDefault();
+  });
+
+/* Scroll To Top */
+
+$(window).scroll(function(){
+  if ($(this).scrollTop() >= 500) {
+  $('.scroll-to-top').fadeIn();
+  } else {
+  $('.scroll-to-top').fadeOut();
+  }
+  });
+
+$('.scroll-to-top').click(function(){
+$('html, body').animate({scrollTop : 0},800);
+return false;
+ });
+</pre>
+</div>
+<!-- Post Coding (SyntaxHighlighter) End -->
+
+
+<div class="post-title">
+    <h2>How to implement?</h2>
+</div>
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor nec,
+    tempor semper metus. Cras vel tempus velit, et accumsan nisi. Duis laoreet pretium
+    ultricies. Curabitur rhoncus auctor nunc congue sodale Sed posuere nisi ipsum.</p>
+
+
+<!-- Post Image Gallery Start -->
+<div class="row margin-top-40 margin-bottom-40">
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <a href="{% static 'images/blog/7.jpg' %}" class="image-popup" title="image Title">
+            <img src="{% static 'images/blog/7.jpg' %}" class="img-responsive" alt="">
+        </a>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <a href="{% static 'images/blog/5.jpg' %}" class="image-popup" title="image Title">
+            <img src="{% static 'images/blog/5.jpg' %}" class="img-responsive" alt="">
+        </a>
+    </div>
+
+    <div class="col-md-4 col-sm-6 col-xs-12">
+        <a href="{% static 'images/blog/6.jpg' %}" class="image-popup" title="image Title">
+            <img src="{% static 'images/blog/6.jpg' %}" class="img-responsive" alt="">
+        </a>
+    </div>
+
+</div>
+<!-- Post Image Gallery End -->
+
+
+<div class="post-title">
+    <h2>Make it more awesome</h2>
+</div>
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est.</p>
+
+
+<!-- Post Blockquote (Italic Style) Start -->
+<blockquote class="margin-top-40 margin-bottom-40">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+        commodo hendrerit vitae nec eros. Vestibulum neque est, imperdiet nec tortor
+        nec, tempor semper metus. Cras vel tempus velit, <b>et accumsan nisi</b>. Duis
+        laoreet pretium ultricies. Curabitur rhoncus auctor nunc congue sodale Sed
+        posuere nisi ipsum.</p>
+</blockquote>
+<!-- Post Blockquote (Italic Style) End -->
+
+
+<div class="post-title">
+    <h2>Learn to check all the features</h2>
+</div>
+
+
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin at quam at orci
+    commodo hendrerit vitae nec eros. Vestibulum neque est.</p>
+
+
+<!-- Post List Style Start -->
+<div class="list">
+    <ul>
+        <li>Ready to use Blog Template</li>
+        <li>It have all the necessary features which you need to run blog</li>
+        <li>Neat and Clean Typography</li>
+        <li>Speed Optimization</li>
+    </ul>
+</div>
+
+
+<div class="list list-style margin-top-40">
+    <ul>
+        <li>Ready to use Blog Template</li>
+        <li>It have all the necessary features which you need to run blog</li>
+        <li>Neat and Clean Typography</li>
+        <li>Speed Optimization</li>
+    </ul>
+</div>
+
+
+<div class="list list-style-2 margin-top-40">
+    <ul>
+        <li>Ready to use Blog Template</li>
+        <li>It have all the necessary features which you need to run blog</li>
+        <li>Neat and Clean Typography</li>
+        <li>Speed Optimization</li>
+    </ul>
+</div>
+<!-- Post List Style End -->

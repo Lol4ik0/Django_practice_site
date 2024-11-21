@@ -1,0 +1,15 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Редагувати мій профіль{% endblock %}
+{% block title2 %}Редагувати мій профіль{% endblock %}
+
+{% block content %}
+
+    <form method="post">
+        {% csrf_token %}
+        <p>Чи ви впевнені, що хочете видалити ваш акаунт: "{{ user.username }}"?</p>
+        {{ form }}
+        <button type="submit" class="btn btn-primary btn-block w-100">Видалити</button>
+    </form>
+    
+{% endblock %}  

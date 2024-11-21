@@ -1,0 +1,40 @@
+{% extends 'users/base.html' %}
+
+{% block title %}Мій профіль{% endblock %}
+{% block title2 %}{% endblock %}
+
+{% block content %}
+    <!-- About Me (Right Sidebar) Start -->
+    <div class="row page-body">
+        <div class="col-md-12 content-page">
+            <div class="col-md-12 blog-post">
+
+                <div class="post-title margin-bottom-10">
+                    <h1>Мій профіль</h1>
+                </div>
+
+                <p>
+                    {% if request.user.is_authenticated %}
+                        Вітаємо, {{ user.username }}
+                        <br>
+                        pib: {{ user.pib }}                 <br>
+                        first name: {{ user.first_name }}   <br>
+                        last name: {{ user.last_name }}     <br>
+                        birth_date: {{ user.birth_date }}   <br>
+                        gender: {{ user.gender }}           <br>
+                        email: {{ user.email }}             <br>
+                        <!--photo: <img src="user.photo.url " width="50">  <br>-->
+                        phone: {{ user.phone }}             <br>
+                        
+                        <a class="btn btn-primary btn-block w-100" href="{{ user.get_absolute_url_for_update }}">Edit my profile</a>
+                        <br>
+                        <a class="btn btn-danger btn-block w-100" href="{{ user.get_absolute_url_for_delete }}">Delete my profile</a>
+                    {% else %}
+                        Ви не аутентифіковані
+                    {% endif %}
+                </p>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
